@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Special For You 💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .box {
+            margin-top: 120px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 22px;
+            margin: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4d6d;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* HEART STYLE */
+        .heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: rise 6s linear forwards;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        /* MESSAGE STYLE */
+        .msg {
+            position: fixed;
+            color: yellow;
+            font-size: 18px;
+            font-weight: bold;
+            animation: fadeMsg 2s ease forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeMsg {
+            0% {opacity: 1; transform: translateY(0);}
+            100% {opacity: 0; transform: translateY(-50px);}
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>💖 Just For You 💖</h1>
+        <p>Sach bolu... 😊</p>
+        <p>रिश्ता हमारा ये दुनिया में सबसे प्यारा हो 🌍✨</p>
+        <p>हर मुश्किल मोड़ पर बस तुम्हारा ही सहारा हो 🤗💫</p>
+        <p>चाहे बदल जाए ये सारा ज़माना मगर ⏳</p>
+        <p>दुआ है रब से कि साथ हमेशा हमारा हो 👭💕</p>
+
+        <button onclick="window.location.href='final.html'">Next 💖</button>
+    </div>
+
+    <script>
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.innerHTML = "💖";
+            heart.className = "heart";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            // CLICK EVENT
+            heart.onclick = function (e) {
+                let msg = document.createElement("div");
+                msg.innerHTML = "😏 Sudhar jao dear!";
+                msg.className = "msg";
+
+                msg.style.left = e.clientX + "px";
+                msg.style.top = e.clientY + "px";
+
+                document.body.appendChild(msg);
+
+                setTimeout(() => msg.remove(), 2000);
+                heart.remove();
+            };
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>

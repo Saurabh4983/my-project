@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One Last Thing 💖</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1d2b64, #f8cdda);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+            animation: fadeIn 2s ease;
+        }
+
+        h1 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: #e63950;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>💫 Ek Baat Aur...</h1>
+        <p>Main perfect nahi hoon 😅</p>
+        <p>Par jab bhi tumse baat hoti hai...</p>
+        <p>sab kuch perfect lagta hai 💖</p>
+
+        <button class="btn" onclick="showFinal()">Last Click 😏</button>
+
+        <p id="finalMsg"></p>
+    </div>
+
+    <script>
+        function showFinal() {
+            document.getElementById("finalMsg").innerHTML =
+            "✨ Tum meri Sabse Achi Freaind Ho Bas Kayde Me Raha Karo Samjhe Dear  💕";
+        }
+    </script>
+    <style>
+body {
+    overflow: hidden;
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    z-index: 9999;
+    animation: floatUp linear forwards;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+.msg {
+    position: fixed;
+    color: yellow;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 99999;
+    animation: fade 2s forwards;
+    pointer-events: none;
+}
+
+@keyframes fade {
+    0% {opacity: 1; transform: translateY(0);}
+    100% {opacity: 0; transform: translateY(-40px);}
+}
+</style>
+
+</body>
+<script>
+function createHeart() {
+    let heart = document.createElement("div");
+
+    // ❤️ + 💙 mix hearts
+    let colors = ["❤️", "💙"];
+    heart.innerHTML = colors[Math.floor(Math.random() * colors.length)];
+
+    heart.className = "heart";
+
+    // random left position (IMPORTANT FIX)
+    heart.style.left = Math.random() * 100 + "vw";
+
+    // random speed
+    let duration = 3 + Math.random() * 3;
+    heart.style.animationDuration = duration + "s";
+
+    // CLICK EVENT
+    heart.onclick = function (e) {
+        let msg = document.createElement("div");
+        msg.className = "msg";
+        msg.innerHTML = "😏 Sudhar jao dear!";
+
+        msg.style.left = e.clientX + "px";
+        msg.style.top = e.clientY + "px";
+
+        document.body.appendChild(msg);
+
+        setTimeout(() => msg.remove(), 2000);
+        heart.remove();
+    };
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+// FAST SPAWN (important for visible effect)
+setInterval(createHeart, 150);
+</script>
+</html>
